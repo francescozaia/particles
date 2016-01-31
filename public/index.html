@@ -1,0 +1,41 @@
+<html>
+<head>
+    <title>WebGL</title>
+    <link rel="stylesheet" href="./css/particles.css" />
+    <!--
+        Define a simple GLSL (OpenGL Shading Language) fragment shader.
+        More info: http://en.wikipedia.org/wiki/GLSL
+        -->
+    <script id="shader-fs" type="x-shader/x-fragment">
+				#ifdef GL_ES
+				  precision highp float;
+				  #endif
+    		void main(void) {
+    		 gl_FragColor = vec4(0.4, 0.01, 0.08, 0.5);
+    		}
+
+    </script>
+    <!--
+        Define a simple GLSL (OpenGL Shading Language) vertex shader.
+        More info: http://en.wikipedia.org/wiki/GLSL
+        -->
+    <script id="shader-vs" type="x-shader/x-vertex">
+  			attribute vec3 vertexPosition;
+
+			uniform mat4 modelViewMatrix;
+			uniform mat4 perspectiveMatrix;
+
+ 			void main(void) {
+				gl_Position = perspectiveMatrix * modelViewMatrix * vec4(vertexPosition, 1.0);
+			}
+    </script>
+</head>
+<body>
+<div class="wrapper">
+    <div class="wrapper-inner">
+        <canvas id="webGLCanvas" width="740" height="715"></canvas>
+    </div>
+</div>
+<script src="js/dist/bundle-particles.min.js"></script>
+</body>
+</html>
